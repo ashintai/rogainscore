@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-<input type="file" id="fileInput">
-    <pre id="fileContent"></pre>
+    <input type="file" id="fileInput" accept="image/*">
+    <img id="fileContent" alt="Selected Image" style="max-width: 100%; height: auto;">
 
     <script>
         document.getElementById('fileInput').addEventListener('change', function(event) {
@@ -15,9 +15,9 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    document.getElementById('fileContent').textContent = e.target.result;
+                    document.getElementById('fileContent').src = e.target.result;
                 };
-                reader.readAsText(file);
+                reader.readAsDataURL(file);
             }
         });
     </script>
